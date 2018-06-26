@@ -11,6 +11,7 @@ class Register extends Component {
     this.state = {
       name: '',
       email: '',
+      profileImage: '',
       password: '',
       password2: '',
       errors: {}
@@ -42,6 +43,7 @@ class Register extends Component {
     const newUser = {
       name: this.state.name,
       email: this.state.email,
+      profileImage: this.state.profileImage,
       password: this.state.password,
       password2: this.state.password2
     };
@@ -59,7 +61,7 @@ class Register extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Sign Up</h1>
               <p className="lead text-center">
-                Create your DevConnector account
+                Create your TeamGroup account
               </p>
               <form noValidate onSubmit={this.onSubmit}>
                 <TextFieldGroup
@@ -76,7 +78,15 @@ class Register extends Component {
                   value={this.state.email}
                   onChange={this.onChange}
                   error={errors.email}
-                  info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
+                  info=""
+                />
+                <TextFieldGroup
+                  placeholder="Profile Image"
+                  name="profileImage"
+                  value={this.state.profileImage}
+                  onChange={this.onChange}
+                  error={errors.profileImage}
+                  info="URL Profile Image"
                 />
                 <TextFieldGroup
                   placeholder="Password"
@@ -94,7 +104,7 @@ class Register extends Component {
                   onChange={this.onChange}
                   error={errors.password2}
                 />
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+                <input type="submit" className="btn btn-outline-dark btn-lg btn-block mt-4" />
               </form>
             </div>
           </div>

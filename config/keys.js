@@ -1,6 +1,5 @@
-'use strict';
-
-module.exports = {
-  mongoURI: 'mongodb://admin:admin123@ds163650.mlab.com:63650/teamgroup',
-  secretOrKey: 'secret'
-};
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./keys_prod');
+} else {
+  module.exports = require('./keys_dev');
+}

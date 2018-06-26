@@ -14,12 +14,12 @@ class CreateProfile extends Component {
     this.state = {
       displaySocialInputs: false,
       handle: '',
+      profileImage: '',
       company: '',
       website: '',
       location: '',
       status: '',
       skills: '',
-      githubusername: '',
       bio: '',
       twitter: '',
       facebook: '',
@@ -44,12 +44,12 @@ class CreateProfile extends Component {
 
     const profileData = {
       handle: this.state.handle,
+      profileImage: this.state.profileImage,
       company: this.state.company,
       website: this.state.website,
       location: this.state.location,
       status: this.state.status,
       skills: this.state.skills,
-      githubusername: this.state.githubusername,
       bio: this.state.bio,
       twitter: this.state.twitter,
       facebook: this.state.facebook,
@@ -124,13 +124,14 @@ class CreateProfile extends Component {
     // Select options for status
     const options = [
       { label: '* Select Professional Status', value: 0 },
+      { label: 'Accountant', value: 'Accountant' },
       { label: 'Developer', value: 'Developer' },
-      { label: 'Junior Developer', value: 'Junior Developer' },
-      { label: 'Senior Developer', value: 'Senior Developer' },
-      { label: 'Manager', value: 'Manager' },
-      { label: 'Student or Learning', value: 'Student or Learning' },
-      { label: 'Instructor or Teacher', value: 'Instructor or Teacher' },
+      { label: 'Finance', value: 'Finance' },
+      { label: 'Human Resource', value: 'Human Resource' },
       { label: 'Intern', value: 'Intern' },
+      { label: 'Manager', value: 'Manager' },
+      { label: 'Marketing', value: 'Marketing' },
+      { label: 'Sales', value: 'Sales' },
       { label: 'Other', value: 'Other' }
     ];
 
@@ -152,6 +153,14 @@ class CreateProfile extends Component {
                   onChange={this.onChange}
                   error={errors.handle}
                   info="A unique handle for your profile URL. Your full name, company name, nickname"
+                />
+                <TextFieldGroup
+                  placeholder="* Profile Image"
+                  name="profileImage"
+                  value={this.state.profileImage}
+                  onChange={this.onChange}
+                  error={errors.profileImage}
+                  info="A URL to profile image"
                 />
                 <SelectListGroup
                   placeholder="Status"
@@ -195,14 +204,6 @@ class CreateProfile extends Component {
                   info="Please use comma separated values (eg.
                     HTML,CSS,JavaScript,PHP"
                 />
-                <TextFieldGroup
-                  placeholder="Github Username"
-                  name="githubusername"
-                  value={this.state.githubusername}
-                  onChange={this.onChange}
-                  error={errors.githubusername}
-                  info="If you want your latest repos and a Github link, include your username"
-                />
                 <TextAreaFieldGroup
                   placeholder="Short Bio"
                   name="bio"
@@ -230,7 +231,7 @@ class CreateProfile extends Component {
                 <input
                   type="submit"
                   value="Submit"
-                  className="btn btn-info btn-block mt-4"
+                  className="btn btn-lg btn-info btn-block mt-4"
                 />
               </form>
             </div>

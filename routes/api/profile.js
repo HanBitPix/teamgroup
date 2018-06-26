@@ -37,7 +37,7 @@ router.get(
     Profile.findOne({
         user: req.user.id
       })
-      .populate('user', ['name', 'avatar'])
+      .populate('user', ['name', 'profileImage'])
       .then(profile => {
         if (!profile) {
           errors.noprofile = "There is no profile for this user";
@@ -55,10 +55,10 @@ router.get('/all', (req, res) => {
   const errors = {};
 
   Profile.find()
-    .populate('user', ['name', 'avatar'])
+    .populate('user', ['name', 'profileImage'])
     .then(profiles => {
       if (!profiles) {
-        errors.noprofile = 'There are no profies';
+        errors.noprofile = 'There are no profiles';
         return res.status(404).json(errors);
       }
 
@@ -80,7 +80,7 @@ router.get('/handle/:handle', (req, res) => {
   Profile.findOne({
       handle: req.params.handle
     })
-    .populate('user', ['name', 'avatar'])
+    .populate('user', ['name', 'profileImage'])
     .then(profile => {
       if (!profile) {
         errors.noprofile = 'There is no profile for this user';
@@ -101,7 +101,7 @@ router.get('/user/:user_id', (req, res) => {
   Profile.findOne({
       user: req.params.user_id
     })
-    .populate('user', ['name', 'avatar'])
+    .populate('user', ['name', 'profileImage'])
     .then(profile => {
       if (!profile) {
         errors.noprofile = 'There is no profile for this user';
@@ -139,6 +139,7 @@ router.post(
     const profileFields = {};
     profileFields.user = req.user.id;
     if (req.body.handle) profileFields.handle = req.body.handle;
+    if (req.body.profileImage) profileFields.profileImage = req.body.profileImage;
     if (req.body.company) profileFields.company = req.body.company;
     if (req.body.website) profileFields.website = req.body.website;
     if (req.body.location) profileFields.location = req.body.location;

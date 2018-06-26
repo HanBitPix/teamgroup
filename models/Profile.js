@@ -14,6 +14,9 @@ const ProfileSchema = new Schema({
     required: true,
     max: 40
   },
+  profileImage: {
+    type: String
+  },
   company: {
     type: String
   },
